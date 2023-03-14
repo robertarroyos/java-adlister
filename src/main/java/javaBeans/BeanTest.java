@@ -10,8 +10,8 @@ public class BeanTest {
         Authors newAuthor = new Authors(1, "Robert", "Arroyos");
         Authors newAuthor2 = new Authors(2, "Chase", "Medford");
         Authors newAuthor3 = new Authors(3, "Andre", "AndreLastName");
-        Authors newAuthor4 = new Authors(3, "Ken", "KenLastName");
-        Authors newAuthor5 = new Authors(3, "Reggie", "ReggieLastName");
+        Authors newAuthor4 = new Authors(4, "Ken", "KenLastName");
+        Authors newAuthor5 = new Authors(5, "Reggie", "ReggieLastName");
 
         Quotes newQuote1 = new Quotes(newAuthor, "New quote content");
         Quotes newQuote2 = new Quotes(newAuthor2, "Newer quote content added");
@@ -23,7 +23,7 @@ public class BeanTest {
 
 
        for (Quotes quote : quotes) {
-           System.out.println( quote.getAuthors().getFirstName() + " " + quote.getAuthors().getLastName() + " " + "quote: " + quote.getContent());
+           System.out.println( quote.getAuthors().getFirstName() + " " + quote.getAuthors().getLastName() + " " + "quote: \u03c0 " + quote.getContent());
        }
 
     }
