@@ -12,15 +12,12 @@ public class JDBCEmployees {
 
         try {
             DriverManager.registerDriver(new Driver());
-            Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/employees?allowPublicKeyRetrieval=true&useSSL=false",
-                    "root",
-                    "codeup"
-            );
+            String url = "jdbc:mysql://localhost:3306/employees?allowPublicKeyRetrieval=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(url, "root", "codeup");
 
             Statement stmt = connection.createStatement();
             String query = "select first_name from employees.employees";
-            ResultSet rs = stmt.executeQuery(query);
+            ResultSet rs = connection.createStatement().executeQuery(query);
 
             ArrayList<String> names = new ArrayList<>();
 
