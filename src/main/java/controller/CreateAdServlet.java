@@ -1,3 +1,9 @@
+package controller;
+
+import dao.Ads;
+import dao.DaoFactory;
+import models.Ad;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,13 +18,16 @@ public class CreateAdServlet extends HttpServlet {
             .forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String adTitle = request.getParameter("title");
+        String adDescription = request.getParameter("description");
         Ad ad = new Ad(
             1, // for now we'll hardcode the user id
-            request.getParameter("title"),
-            request.getParameter("description")
+            adTitle,
+            adDescription
         );
-        DaoFactory.getAdsDao().insert(ad);
+        Ads adsDao = DaoFactory.getAdsDao();
+        adsDao.insert(ad);
         response.sendRedirect("/ads");
     }
 }
